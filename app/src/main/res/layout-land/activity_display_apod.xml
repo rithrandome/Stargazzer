@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tool="http://schemas.android.com/apk/res-auto"
-    tools:context=".MainActivity"
-    android:background="#2e2e2e"
+    tools:context=".DisplayApodActivity"
+    android:background="@drawable/bg_img"
     android:scrollbars="vertical">
 
     <ScrollView
@@ -21,7 +21,7 @@
 
             <TextView
                 android:id="@+id/text"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/evolve_sans_bold_evo"
                 android:layout_centerHorizontal="true"
@@ -34,28 +34,30 @@
                 android:text="ASTRONOMICAL PICTURE OF THE DAY"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
-                android:textSize="35sp" />
+                android:textSize="25sp" />
 
-<!--            <TextView-->
-<!--                android:id="@+id/text2"-->
-<!--                android:layout_marginTop="20dp"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:textColor="@android:color/holo_red_light"-->
-<!--                android:padding="10dp"-->
-<!--                android:visibility="gone"-->
-<!--                android:fontFamily="@font/evolve_sans_light_evo"-->
-<!--                android:layout_centerHorizontal="true"-->
-<!--                android:background="@drawable/bg_2"-->
-<!--                android:layout_below="@id/text"-->
-<!--                tools:visibility="visible"-->
-<!--                android:textSize="20sp" />-->
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/evolve_sans_bold_evo"
+                android:text="TITLE"
+                android:textColor="#189ECD"
+                android:textSize="50sp"
+                android:textAlignment="center"
+                android:textStyle="italic"
+                android:gravity="center_horizontal" />
+
 
             <TextView
                 android:id="@+id/date_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/text"
+                android:layout_below="@id/title"
                 android:layout_marginTop="20dp"
                 android:padding="10dp"
                 android:shadowColor="@android:color/black"
@@ -78,7 +80,7 @@
 
             <ImageView
                 android:id="@+id/apod"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="350dp"
                 android:layout_marginTop="20dp"
                 android:layout_below="@id/date_text"
@@ -124,5 +126,19 @@
         android:layout_alignParentRight="true"
         android:layout_marginEnd="15dp" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/library_search_button"
+        android:layout_width="wrap_content"
+        android:padding="13dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_search"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/bg_3"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="15dp" />
 
 </RelativeLayout>
