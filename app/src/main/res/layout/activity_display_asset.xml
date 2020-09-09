@@ -40,6 +40,7 @@
                 android:layout_marginTop="30dp"
                 android:layout_below="@id/title"
                 android:padding="10dp"
+                android:background="@drawable/bg_2"
                 android:shadowColor="@android:color/black"
                 android:layout_centerHorizontal="true"
                 android:contentDescription="@string/todo"/>

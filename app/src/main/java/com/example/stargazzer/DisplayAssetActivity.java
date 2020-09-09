@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.Target;
 import com.squareup.picasso.Picasso;
 
 import retrofit2.Call;
@@ -50,6 +51,7 @@ public class DisplayAssetActivity extends AppCompatActivity {
         Glide.with(this)
                 .load(url)
                 .placeholder(R.drawable.ic_launcher_foreground)
+                .override(Target.SIZE_ORIGINAL)
                 .into(imageView);
     }
 
@@ -72,6 +74,8 @@ public class DisplayAssetActivity extends AppCompatActivity {
                 assert assetItem != null;
 
                 imageUrl = assetItem.getCollection().getItems().get(1).getHref();
+                imageUrl = imageUrl.replace("http","https");
+
 
 
                 System.out.println(imageUrl);
