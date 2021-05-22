@@ -15,7 +15,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
-import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -96,10 +95,9 @@ public class DisplayApodActivity extends YouTubeBaseActivity implements DatePick
 
     public void loadImageView(String url, ImageView imageView){
 
-        Glide.with(this)
+        Picasso.get()
                 .load(url)
                 .placeholder(R.drawable.ic_launcher_foreground)
-                .fitCenter()
                 .into(imageView);
     }
 
@@ -121,7 +119,6 @@ public class DisplayApodActivity extends YouTubeBaseActivity implements DatePick
         getPicInfo(setDate);
 
     }
-
 
 
     private void getPicInfo(String setDate){

@@ -52,6 +52,8 @@ public class DisplayAssetActivity extends AppCompatActivity {
                 .load(url)
                 .placeholder(R.drawable.ic_launcher_foreground)
                 .override(Target.SIZE_ORIGINAL)
+                .fitCenter()
+                .centerCrop()
                 .into(imageView);
     }
 

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
@@ -41,29 +42,46 @@ public class SearchActivity extends AppCompatActivity {
         searchBar.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                itemsIDs.clear();
-                itemsTitles.clear();
 
-                recyclerAdapter.notifyDataSetChanged();
+                if(charSequence.toString().equals("")) {
+                    itemsIDs.clear();
+                    itemsTitles.clear();
+
+                    recyclerAdapter.notifyDataSetChanged();
+                }
 
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                itemsIDs.clear();
-                itemsTitles.clear();
+                if(charSequence.toString().equals("")) {
+                    itemsIDs.clear();
+                    itemsTitles.clear();
 
-                recyclerAdapter.notifyDataSetChanged();
-
+                    recyclerAdapter.notifyDataSetChanged();
+                }
             }
 
             @Override
-            public void afterTextChanged(Editable editable) {
-                if(editable != null)
-                    performSearch(editable.toString());
-                else
-                    performSearch(null);
+            public void afterTextChanged(final Editable editable) {
+                if(editable != null) {
+
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            performSearch(editable.toString());
+                        }
+                    }, 2000);
+
+                }
+                else {
+                    itemsIDs.clear();
+                    itemsTitles.clear();
+
+                    recyclerAdapter.notifyDataSetChanged();
+                }
             }
         });
 
@@ -93,13 +111,13 @@ public class SearchActivity extends AppCompatActivity {
 
         apiInterface = ApiClient.getLibraryRetrofit().create(ApiInterface.class);
 
-//        if(q == null){
-//            itemsIDs.clear();
-//            itemsTitle.clear();
-//
-//            recyclerAdapter.notifyDataSetChanged();
-//            return;
-//        }
+        if(q == null){
+            itemsIDs.clear();
+            itemsTitles.clear();
+
+            recyclerAdapter.notifyDataSetChanged();
+            return;
+        }
 
         Call<LibraryItem> call = apiInterface.performSearch(q);
 
